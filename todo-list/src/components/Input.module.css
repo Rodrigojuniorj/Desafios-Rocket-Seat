@@ -1,0 +1,36 @@
+.content {
+    display: flex;
+    justify-content: center;
+    margin-top: -1.7rem;
+}
+
+.content input[type=text] {
+    width: 39.875rem;
+    height: 3.265rem;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    background-color: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    color: var(--gray-100); 
+    border-radius: 8px;
+}
+
+.content button[type=submit] {
+    width: 5.625rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--blue-800);
+    color: var(--gray-100);
+
+    transition: background 0.2s;
+}
+
+.content button[type=submit]:hover {
+    background: var(--blue-400);
+}
+
+.content button[type=submit] > svg {
+    vertical-align: middle;
+    color: var(--gray-100);
+    font-weight: 700;
+}

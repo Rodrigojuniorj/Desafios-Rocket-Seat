@@ -1,0 +1,22 @@
+.header{
+  background: var(--gray-700);
+  padding:4.7rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header img {
+  margin-right: 0.9rem;
+}
+
+.header h2 {
+  text-align: start;
+  color: var(--blue-400);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.header h2 span {
+  color: var(--purple-400);
+}

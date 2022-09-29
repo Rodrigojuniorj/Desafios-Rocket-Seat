@@ -1,0 +1,68 @@
+import { Flex, Text } from "@chakra-ui/react";
+
+export function Information() {
+  return (
+    <>
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+    >
+      <Text
+        color="yellow.800"
+        fontSize={["4xl","4xl","4xl","4xl","5xl"]}
+        fontWeight="600"
+      >
+        50
+      </Text>
+      <Text
+        color="gray.400"
+        fontSize={["xl","xl","xl","2xl","2xl"]}
+        fontWeight="600"
+      >
+        Países
+      </Text>
+    </Flex>
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+    >
+        <Text
+          color="yellow.800"
+          fontSize={["4xl","4xl","4xl","4xl","5xl"]}
+          fontWeight="600"
+        >
+          60
+        </Text>
+        <Text
+          color="gray.400"
+          fontSize={["xl","xl","xl","2xl","2xl"]}
+          fontWeight="600"
+        >
+          línguas
+        </Text>
+      </Flex>
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+      >
+        <Text
+          color="yellow.800"
+          fontSize={["4xl","4xl","4xl","4xl","5xl"]}
+          fontWeight="600"
+        >
+          27
+        </Text>
+        <Text
+          color="gray.400"
+          fontSize={["xl","xl","xl","2xl","2xl"]}
+          fontWeight="600"
+        >
+          Cidades +100
+        </Text>
+      </Flex>
+    </>
+  )
+}

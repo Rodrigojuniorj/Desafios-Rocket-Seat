@@ -1,0 +1,88 @@
+
+.listItem + .listItem{
+  margin-top: 0.75rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gray-500);
+  padding: 1rem;
+  color: var(--gray-100);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.listItem p{
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.listItem button[type=button]:nth-of-type(2){
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 2px;
+}
+
+.listItem button[type=button] svg{
+  vertical-align: middle;
+}
+
+.listItem button[type=button] svg:hover{
+  color: var(--gray-100);
+}
+
+
+.checkContainer{
+  min-width: 1.125rem;
+  height: 1.125rem;
+  background: none;
+  border: none;
+}
+
+.checkContainer div {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--blue-400);
+  border-radius: 50%;
+}
+
+.checkContainer div:hover {
+  border: 2px solid var(--blue-800);
+  background: rgba(30, 111, 159, 0.3);
+}
+
+.checkedItem{
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.checkedButton{
+  min-width: 1.125rem;
+  height: 1.125rem;
+  background: none;
+  border: none;
+}
+
+.checkedButton div {
+  width: 100%;
+  height: 100%;
+  background: var(--purple-800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.checkedButton div > svg{
+  color: var(--gray-100);
+  width: 10px;
+}
+
+.checkedButton div:hover {
+  background: var(--purple-400);
+}
