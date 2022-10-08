@@ -7,7 +7,8 @@ export const CardContainer = styled.div`
   background-color: ${props => props.theme.basePost};
   border-radius: 10px;
   padding: 2rem;
-  max-height: 16.25rem;
+  max-height: 13rem;
+  min-height: 13rem;
 
   header {
     display: flex;

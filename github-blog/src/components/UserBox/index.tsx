@@ -15,18 +15,19 @@ interface User {
   followers: string;
 }
 
+const username = import.meta.env.VITE_GITHUB_USERNAME;
+
 export function UserBox(){
   const [users, setUsers] = useState<User>();
 
   async function buscarDados() {
-    await api.get('/users/rodrigojuniorj').then(response => setUsers(response.data))
+    await api.get(`/users/${username}`).then(response => setUsers(response.data))
   }
 
   useEffect(() => {
     buscarDados()
   },[])
 
-  console.log(users)
 
   if(!users){
     return <h1>Carregando...</h1> 

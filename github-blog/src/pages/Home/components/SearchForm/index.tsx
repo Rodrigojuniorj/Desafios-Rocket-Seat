@@ -10,7 +10,11 @@ const searchFormaSchema = z.object({
 
 type SearchFormInputs = z.infer<typeof searchFormaSchema>
 
-export function SearchForm() {
+interface SearchFormProps {
+  countPost: number;
+}
+
+export function SearchForm({ countPost }: SearchFormProps) {
 
   const {
     register,
@@ -24,7 +28,7 @@ export function SearchForm() {
     <SearchFormContainer >
       <div>
         <h2>Publicações</h2>
-        <span>6 publicações</span>
+        <span>{countPost} publicações</span>
       </div>
       <input
         type="text"
