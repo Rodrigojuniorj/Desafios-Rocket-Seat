@@ -1,6 +1,6 @@
 import { ContentCard, HomeContainer } from "./styles";
 
-import { UserBox } from "../../components/UserBox";
+import { User, UserBox } from "../../components/UserBox";
 import { SearchForm } from "./components/SearchForm";
 import { Card } from "../../components/Card";
 import { useCallback, useEffect, useState } from "react";
@@ -20,6 +20,7 @@ export interface Posts {
 
 export function Home(){
   const [posts, setPosts] = useState<Posts[]>([]);
+  const [user, setUser] = useState<User>();
 
   const getPosts = useCallback(
     async (query: string = "") => {
@@ -35,16 +36,37 @@ export function Home(){
     [posts]
   );
 
+  const getUSer = useCallback(
+    async () => {
+      try {
+        const response = await api.get(
+          `/users/${username}`
+        );
+        
+        setUser(response.data);
+      } finally {
+      }
+    },
+    [posts]
+  );
+
   useEffect(() => {
     getPosts();
+    getUSer();
   },[])
 
-  console.log(posts)
+  
+  if(!user) {
+    return <h1>Carregando...</h1> 
+  }
 
   return (
     <>
       <HomeContainer>
-        <UserBox />
+        <UserBox 
+          image
+          users={user}
+        />
         <SearchForm
           countPost={posts.length}
         />

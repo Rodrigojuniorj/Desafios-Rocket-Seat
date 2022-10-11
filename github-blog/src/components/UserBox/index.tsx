@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { api } from "../../service/axios";
 import { UserBoxContainer, UserContent } from "./styles";
-import { ArrowSquareUpRight, GithubLogo, Buildings, Users } from 'phosphor-react'
+import { ArrowSquareUpRight, GithubLogo, Buildings, Users, ChatCircleText, ArrowLeft, Calendar } from 'phosphor-react'
 
-import imgUser from '../../assets/marcaoPT.jpeg'
-
-interface User {
+export interface User {
   name: string;
   bio: string;
   avatar_url: string;
@@ -15,46 +13,80 @@ interface User {
   followers: string;
 }
 
+export interface PostProps {
+  created_at: string;
+  title: string;
+  body: string;
+  comments: string;
+}
+
+
+interface UserBoxProps {
+  image?: boolean;
+  post?: PostProps;
+  users?: User;
+}
+
 const username = import.meta.env.VITE_GITHUB_USERNAME;
 
-export function UserBox(){
-  const [users, setUsers] = useState<User>();
+export function UserBox({ image , post, users}: UserBoxProps){
 
-  async function buscarDados() {
-    await api.get(`/users/${username}`).then(response => setUsers(response.data))
-  }
-
-  useEffect(() => {
-    buscarDados()
-  },[])
-
-
-  if(!users){
+  if(!users) {
     return <h1>Carregando...</h1> 
   }
 
   return (
     <UserBoxContainer>
-      <img src={users.avatar_url} />
+      { image && (
+        <img src={users.avatar_url} />
+      )}
       <UserContent>
         <header>
-          <h2>{users.name}</h2>
-          <a target="_blank" href={users.html_url}><span>GITHUB</span> <ArrowSquareUpRight size={20} /></a>
+          { image ? (
+            <>
+              <h2>{users.name}</h2>
+              <a target="_blank" href={users.html_url}><span>GITHUB</span> <ArrowSquareUpRight size={20} /></a>
+            </>
+          ): (
+            <>
+              <a target="_blank" href={users.html_url}><span><ArrowLeft size={16} /></span>Voltar</a>
+              <a target="_blank" href={users.html_url}><span>GITHUB</span> <ArrowSquareUpRight size={20} /></a>
+            </>
+          )}
         </header>
-        <p>{users.bio}</p>
+        { image ? (
+          <p>{users.bio}</p>
+        ): (
+          <div></div>
+        )}
         <footer>
           <div>
             <GithubLogo size={24} />
             <span>{users.login}</span>
           </div>
-          <div>
-            <Buildings size={24} />
-            <span>{users.company ? users.company : '<RodrigoDev />'}</span>
-          </div>
-          <div>
-            <Users size={24} />
-            <span>{users.followers} Seguidores</span>
-          </div>
+          { image ? (
+            <>
+              <div>
+                <Buildings size={24} />
+                <span>{users.company ? users.company : '<RodrigoDev />'}</span>
+              </div>
+              <div>
+                <Users size={24} />
+                <span>{users.followers} Seguidores</span>
+              </div>
+            </>
+          ): (
+            <>
+              <div>
+                <Calendar size={24} />
+                <span>{users.company ? users.company : '<RodrigoDev />'}</span>
+              </div>
+              <div>
+                <ChatCircleText size={24} />
+                <span>{users.followers} Seguidores</span>
+              </div>
+            </>
+          )}
         </footer>
       </UserContent>
     </UserBoxContainer>

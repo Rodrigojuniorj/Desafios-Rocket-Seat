@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { PostBox, PostProps } from "../../components/PostBox";
 import { api } from "../../service/axios";
-import { PostContainer } from "./styles";
+import { Content, PostContainer } from "./styles";
+
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const username = import.meta.env.VITE_GITHUB_USERNAME;
 const repoName = import.meta.env.VITE_GITHUB_REPONAME;
 
 export function Post() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostProps>();
 
   const { id } = useParams();
 
@@ -29,9 +32,18 @@ export function Post() {
     getPosts();
   },[])
 
+  if(!posts) {
+    return <h1>Carregando...</h1> 
+  }
+
   return (
     <PostContainer>
-      12312
+      <PostBox 
+        post={posts}
+      />
+      <Content>
+        <ReactMarkdown children={posts.body} />
+      </Content>
     </PostContainer>
   )
 }
