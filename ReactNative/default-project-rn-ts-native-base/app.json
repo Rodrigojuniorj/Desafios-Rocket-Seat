@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "baseProject",
+    "slug": "baseProject",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "@react-native-firebase/app"
+    ],
+    "android": {
+      "package": "com.baseProject",
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.baseProject",
+      "googleServicesFile": "./GoogleService-Info.plist"
+    }
+  }
+}
